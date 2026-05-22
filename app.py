@@ -93,11 +93,17 @@ PANDUAN CARA MENJAWAB:
 # ---------------------------------------------------------------
 conversation_histories = {}
 
-gemini_client = genai.Client(api_key=GEMINI_API_KEY)
+gemini_client = None
 
 
 def get_gemini_reply(sender_number: str, user_message: str) -> str:
     """Kirim pesan ke Gemini, simpan histori per nomor pengirim."""
+    global gemini_client
+    if gemini_client is None:
+        api_key = os.getenv("GEMINI_API_KEY")
+        if not api_key:
+            return "Maaf, konfigurasi sistem belum lengkap. Hubungi admin ya!"
+        gemini_client = genai.Client(api_key=api_key)
     if sender_number not in conversation_histories:
         conversation_histories[sender_number] = gemini_client.chats.create(
             model="models/gemini-3.5-flash",
