@@ -117,7 +117,7 @@ def get_gemini_reply(sender_number: str, user_message: str) -> str:
         return response.text
     except Exception as e:
         print(f"[ERROR Gemini] {e}")
-        return "Maaf, ada gangguan teknis sebentar. Silakan coba lagi ya!"
+        return f"DEBUG ERROR: {str(e)}"
 
 
 # ---------------------------------------------------------------
