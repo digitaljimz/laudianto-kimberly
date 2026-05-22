@@ -1,0 +1,13 @@
+# PENTING: File ini mencegah API key kamu terupload ke GitHub
+.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.Python
+venv/
+env/
+
+# VS Code
+.vscode/
